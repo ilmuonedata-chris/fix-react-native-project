@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Material from 'react-native-vector-icons/MaterialIcons';
 import { 
   StackNavigator,
   TabNavigator,
   TabBarBottom,
   SwitchNavigator
 } from 'react-navigation';
+import { Button, Text, View } from 'react-native';
 
 import LoginPage from './components/LoginPage/LoginPage';
 import SignupPage from './components/SignupPage/SignupPage';
@@ -18,9 +19,42 @@ import SearchPage from './components/SearchPage/SearchPage';
 export const SignedOut = StackNavigator({
   Login: {
     screen: LoginPage,
+    title: 'LOGIN',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#fff',
+        elevation: 0,
+        shadowOpacity: 0,
+        shadowColor: 'transparent',
+        borderBottomColor:'transparent',
+        borderBottomWidth: 0,
+      },
+      headerTitleStyle: {
+        fontFamily: 'Lato-Regular',
+        fontWeight: '800',
+        fontSize: 12,
+        letterSpacing: 3,
+        color: '#7a7a7a',
+      }
+    }
   },
   Signup: {
     screen: SignupPage,
+    navigationOptions: ({navigation}) => ({
+      headerLeft: (
+        <View style={{marginLeft: 20}}>
+          <Material 
+            name="keyboard-backspace"
+            backgroundColor="transparent"
+            size={30}
+            color="#cdccd8" 
+            onPress={() => {
+              navigation.goBack()
+            }}
+          />
+        </View>
+      ),
+    })
   },
 });
 
@@ -79,7 +113,7 @@ export const SignedIn = TabNavigator({
     navigationOptions: {
       tabBarLabel: "Home",
       tabBarIcon: ({ tintColor }) => (
-        <FontAwesome name="home" size={30} color={tintColor} />
+        <Ionicons name="ios-home" size={30} color={tintColor} />
       )
     }
   },
@@ -88,7 +122,7 @@ export const SignedIn = TabNavigator({
     navigationOptions: {
       tabBarLabel: "Profile",
       tabBarIcon: ({ tintColor }) => (
-        <FontAwesome name="user" size={30} color={tintColor} />
+        <Ionicons name="ios-contact" size={30} color={tintColor} />
       )
     }
   }

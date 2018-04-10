@@ -59,28 +59,28 @@ export default class SignupPage extends Component<{}> {
             style={[styles.input, styles.inputBorderBtm]} 
             onChangeText={(email) => this.setState({email})}
             value={this.state.email}
-            placeholder="Your Email"
+            placeholder="Email Address"
             placeholderTextColor="#b3b3b3"
           />
           <TextInput
             style={[styles.input, styles.inputBorderBtm]} 
             onChangeText={(fname) => this.setState({fname})}
             value={this.state.fname}
-            placeholder="Your First Name"
+            placeholder="First Name"
             placeholderTextColor="#b3b3b3"
           />
           <TextInput
             style={[styles.input, styles.inputBorderBtm]} 
             onChangeText={(lname) => this.setState({lname})}
             value={this.state.lname}
-            placeholder="Your Last Name"
+            placeholder="Last Name"
             placeholderTextColor="#b3b3b3"
           />
           <TextInput
             style={styles.input} 
             onChangeText={(password) => this.setState({password})}
             value={this.state.password}
-            placeholder="Your Password"
+            placeholder="Password"
             placeholderTextColor="#b3b3b3"
             secureTextEntry={true}
           />
@@ -92,7 +92,7 @@ export default class SignupPage extends Component<{}> {
           <View style={styles.anchorWrapper}>
             <Text
               style={styles.anchorLink}
-              onPress={() => this.props.navigation.navigate('Profile')}
+              onPress={() => this.props.navigation.goBack()}
             >
               Log in
             </Text>
