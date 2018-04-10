@@ -5,6 +5,7 @@ import {
   View,
   Text 
 } from 'react-native';
+import { onSignOut } from "../../auth";
 
 export default class ProfilePage extends Component<{}> {
   static navigationOptions = {
@@ -19,6 +20,12 @@ export default class ProfilePage extends Component<{}> {
     return (
       <View style={styles.container}>
         <Text>Profile Page</Text>
+        <Button
+          title="Sign Out"
+          onPress={() => {
+            onSignOut().then(() => this.props.navigation.navigate('SignedOut')) ;
+          }}
+        />
       </View>
     );
   }

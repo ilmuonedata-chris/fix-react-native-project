@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { StackNavigator, TabNavigator, TabBarBottom, SwitchNavigator } from 'react-navigation';
+import { 
+  StackNavigator,
+  TabNavigator,
+  TabBarBottom,
+  SwitchNavigator
+} from 'react-navigation';
 
 import LoginPage from './components/LoginPage/LoginPage';
 import SignupPage from './components/SignupPage/SignupPage';
@@ -88,3 +93,20 @@ export const SignedIn = TabNavigator({
     }
   }
 });
+
+// Root Navigator: determine the root navigator
+export const createRootNavigator = (signedIn = false) => {
+  return SwitchNavigator(
+    {
+      SignedIn: {
+        screen: SignedIn
+      },
+      SignedOut: {
+        screen: SignedOut
+      }
+    },
+    {
+      initialRouteName: signedIn ? "SignedIn" : "SignedOut"
+    }
+  );
+};

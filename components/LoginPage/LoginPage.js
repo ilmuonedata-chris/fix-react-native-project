@@ -9,6 +9,7 @@ import {
   Image
 } from 'react-native';
 import styles from './Stylesheet';
+import { onSignIn } from "../../auth";
 
 export default class LoginPage extends Component<{}> {
   
@@ -84,7 +85,14 @@ export default class LoginPage extends Component<{}> {
           </View>
         </View>
         <TouchableOpacity style={styles.submitWrapper}>
-          <Text style={styles.button}>LOGIN</Text>
+          <Text 
+            style={styles.button}
+            onPress={() => {
+              onSignIn().then(() => this.props.navigation.navigate("SignedIn")); // NEW LOGIC
+            }}
+          >
+            LOGIN
+          </Text>
         </TouchableOpacity>
       </View>
     );
