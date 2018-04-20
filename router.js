@@ -15,27 +15,31 @@ import HomePage from './components/HomePage/HomePage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import SearchPage from './components/SearchPage/SearchPage';
 
+const headerStyling = {
+  backgroundColor: '#fff',
+  elevation: 0,
+  shadowOpacity: 0,
+  shadowColor: 'transparent',
+  borderBottomColor:'transparent',
+  borderBottomWidth: 0,
+};
+
+const headerTitleStyling = {
+  fontFamily: 'Lato-Regular',
+  fontWeight: '800',
+  fontSize: 12,
+  letterSpacing: 3,
+  color: '#7a7a7a',
+};
+
 // SignedOut Pages or First Landing Page
 export const SignedOut = StackNavigator({
   Login: {
     screen: LoginPage,
     title: 'LOGIN',
     navigationOptions: {
-      headerStyle: {
-        backgroundColor: '#fff',
-        elevation: 0,
-        shadowOpacity: 0,
-        shadowColor: 'transparent',
-        borderBottomColor:'transparent',
-        borderBottomWidth: 0,
-      },
-      headerTitleStyle: {
-        fontFamily: 'Lato-Regular',
-        fontWeight: '800',
-        fontSize: 12,
-        letterSpacing: 3,
-        color: '#7a7a7a',
-      }
+      headerStyle: headerStyling,
+      headerTitleStyle: headerTitleStyling
     }
   },
   Signup: {
@@ -58,28 +62,27 @@ export const SignedOut = StackNavigator({
   },
 });
 
+/* --- Signed in Navigations ---- */
 const HomeStack = StackNavigator({
   Home: { 
     screen: HomePage,
     navigationOptions: {
       title: 'HOME',
-      headerStyle: {
-        backgroundColor: '#fff',
-        elevation: 0,
-        shadowOpacity: 0,
-        shadowColor: 'transparent',
-        borderBottomColor:'transparent',
-        borderBottomWidth: 0,
-      },
-      headerTitleStyle: {
-        fontFamily: 'Lato-Regular',
-        fontWeight: '800',
-        fontSize: 12,
-        letterSpacing: 3,
-        color: '#7a7a7a',
-      }
+      headerStyle: headerStyling,
+      headerTitleStyle: headerTitleStyling
     }
   },
+});
+
+const SearchStack = StackNavigator({
+  Search: {
+    screen: SearchPage,
+    navigationOptions: {
+      title: 'SEARCH',
+      headerStyle: headerStyling,
+      headerTitleStyle: headerTitleStyling
+    }
+  }
 });
 
 const ProfileStack = StackNavigator({
@@ -87,21 +90,8 @@ const ProfileStack = StackNavigator({
     screen: ProfilePage,
     navigationOptions: {
       title: 'PROFILE',
-      headerStyle: {
-        backgroundColor: '#fff',
-        elevation: 0,
-        shadowOpacity: 0,
-        shadowColor: 'transparent',
-        borderBottomColor:'transparent',
-        borderBottomWidth: 0,
-      },
-      headerTitleStyle: {
-        fontFamily: 'Lato-Regular',
-        fontWeight: '800',
-        fontSize: 12,
-        letterSpacing: 3,
-        color: '#7a7a7a',
-      }
+      headerStyle: headerStyling,
+      headerTitleStyle: headerTitleStyling
     }
   },
 });
@@ -111,22 +101,41 @@ export const SignedIn = TabNavigator({
   Home: {
     screen: HomeStack,
     navigationOptions: {
-      tabBarLabel: "Home",
       tabBarIcon: ({ tintColor }) => (
-        <Ionicons name="ios-home" size={30} color={tintColor} />
+        <Ionicons name="ios-home-outline" size={30} color={tintColor} />
+      )
+    }
+  },
+  Search: {
+    screen: SearchStack,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => (
+        <Ionicons name="ios-search-outline" size={30} color={tintColor} />
       )
     }
   },
   Profile: {
     screen: ProfileStack,
     navigationOptions: {
-      tabBarLabel: "Profile",
       tabBarIcon: ({ tintColor }) => (
-        <Ionicons name="ios-contact" size={30} color={tintColor} />
+        <Ionicons name="ios-contact-outline" size={30} color={tintColor} />
       )
     }
   }
-});
+},
+{
+  tabBarOptions: {
+    showLabel: false,
+    activeTintColor: '#00b16e',
+    tabStyle: {
+      borderColor: 300
+    },
+    style: {
+      backgroundColor:'white',
+    },
+  }
+}
+);
 
 // Root Navigator: determine the root navigator
 export const createRootNavigator = (signedIn = false) => {

@@ -19,3 +19,14 @@ export const isSignedIn = () => {
       .catch(err => reject(err));
   });
 };
+
+// export const isSignedIn = async () => {
+//   return new Promise((resolve, reject) => {
+//     try {
+//       const value = await AsyncStorage.getItem(USER_KEY);
+//       value !== null ? resolve(true) : resolve(false);
+//     } catch (error) {
+//       reject(error);
+//     }
+//   })
+// }

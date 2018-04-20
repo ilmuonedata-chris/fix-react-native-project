@@ -11,8 +11,7 @@ import {
 import styles from './Stylesheet';
 import { onSignIn } from "../../auth";
 
-export default class LoginPage extends Component<{}> {
-  
+export default class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = { 
