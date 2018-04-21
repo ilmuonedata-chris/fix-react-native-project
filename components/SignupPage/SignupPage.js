@@ -45,17 +45,16 @@ export default class SignupPage extends Component<{}> {
     };
   };
 
-
   render() {
     return (
       <View style={styles.container}>
         <Image
           style={{height: 150, width: 150}}
           source={require('../../assets/images/klaslogotext.png')}
-          resizeMode="contain"
         />
         <View style={styles.inputWrapper}>
           <TextInput
+            underlineColorAndroid='transparent'
             style={[styles.input, styles.inputBorderBtm]} 
             onChangeText={(email) => this.setState({email})}
             value={this.state.email}
@@ -63,6 +62,7 @@ export default class SignupPage extends Component<{}> {
             placeholderTextColor="#b3b3b3"
           />
           <TextInput
+            underlineColorAndroid='transparent'
             style={[styles.input, styles.inputBorderBtm]} 
             onChangeText={(fname) => this.setState({fname})}
             value={this.state.fname}
@@ -70,6 +70,7 @@ export default class SignupPage extends Component<{}> {
             placeholderTextColor="#b3b3b3"
           />
           <TextInput
+            underlineColorAndroid='transparent'
             style={[styles.input, styles.inputBorderBtm]} 
             onChangeText={(lname) => this.setState({lname})}
             value={this.state.lname}
@@ -77,6 +78,7 @@ export default class SignupPage extends Component<{}> {
             placeholderTextColor="#b3b3b3"
           />
           <TextInput
+            underlineColorAndroid='transparent'
             style={styles.input} 
             onChangeText={(password) => this.setState({password})}
             value={this.state.password}

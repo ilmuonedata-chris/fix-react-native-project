@@ -128,15 +128,17 @@ export const SignedIn = TabNavigator({
 },
 {
   tabBarOptions: {
-    showLabel: false,
+    // showLabel: false,
     activeTintColor: '#00b16e',
     tabStyle: {
       borderColor: 300
     },
     style: {
-      backgroundColor:'#000',
+      backgroundColor:'#f6f6f6',
     },
-  }
+  },
+  tabBarComponent: TabBarBottom,
+  tabBarPosition: 'bottom',
 }
 );
 

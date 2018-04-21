@@ -32,10 +32,10 @@ export default class LoginPage extends Component {
         <Image
           style={{height: 150, width: 150}}
           source={require('../../assets/images/klaslogotext.png')}
-          resizeMode="contain"
         />
         <View style={styles.inputWrapper}>
           <TextInput
+            underlineColorAndroid='transparent'
             style={[styles.input, styles.inputBorderBtm]} 
             onChangeText={(email) => this.setState({email})}
             value={this.state.email}
@@ -43,6 +43,7 @@ export default class LoginPage extends Component {
             placeholderTextColor="#b3b3b3"
           />
           <TextInput
+            underlineColorAndroid='transparent'
             style={styles.input} 
             onChangeText={(password) => this.setState({password})}
             value={this.state.password}

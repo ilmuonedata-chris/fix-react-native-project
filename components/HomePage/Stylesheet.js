@@ -2,8 +2,11 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     paddingTop: 20,
+    paddingBottom: 20,
+  },
+  scrollView: {
     paddingLeft: 20,
     paddingRight: 20,
   },

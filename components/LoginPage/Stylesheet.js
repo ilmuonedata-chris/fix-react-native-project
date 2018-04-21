@@ -9,6 +9,10 @@ export default StyleSheet.create({
   fontLato: {
     fontFamily: 'Lato-Regular',
   },
+  imageLogo: {
+    height: 150, 
+    width: 150,
+  },
   button: {
     fontFamily: 'Lato-Regular',
     fontWeight: '300',

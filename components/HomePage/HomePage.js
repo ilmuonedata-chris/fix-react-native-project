@@ -83,6 +83,7 @@ export default class HomePage extends Component<{}> {
             <Image
               style={styles.roundedImg}
               source={require('../../assets/images/starwars-me.jpg')}
+              borderRadius={25}
               resizeMode="contain"
             />
             <TouchableOpacity>
@@ -98,21 +99,23 @@ export default class HomePage extends Component<{}> {
     ));
 
     return (
-      <ScrollView style={styles.container}>
-        <Text style={[styles.header, styles.lightText]}>
-          <Text>Welcome,{' '}</Text>
-          <Text style={styles.userName}>Candice</Text>
-        </Text>
-        <View style={styles.scheduleWrapper}>
-          <View style={styles.textWrapper}>
-            <Text style={[styles.lightText, styles.upcomingText]}>Upcoming Schedule</Text>
-            <View style={styles.badge}>
-              <Text style={[styles.lightText, styles.rightText]}>2</Text>
+      <View style={styles.container}>
+        <ScrollView style={styles.scrollView}>
+          <Text style={[styles.header, styles.lightText]}>
+            <Text>Welcome,{' '}</Text>
+            <Text style={styles.userName}>Candice</Text>
+          </Text>
+          <View style={styles.scheduleWrapper}>
+            <View style={styles.textWrapper}>
+              <Text style={[styles.lightText, styles.upcomingText]}>Upcoming Schedule</Text>
+              <View style={styles.badge}>
+                <Text style={[styles.lightText, styles.rightText]}>2</Text>
+              </View>
             </View>
+            { lessonItems }
           </View>
-          { lessonItems }
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }
