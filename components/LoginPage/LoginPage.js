@@ -53,16 +53,14 @@ export default class LoginPage extends Component {
         </View>
         <View style={styles.textWrapper}>
           <Text style={styles.lightText}>
-            Don't have an account?
+            Don't have an account?{'  '}
           </Text>
-          <View style={styles.anchorWrapper}>
-            <Text
-              style={styles.anchorLink}
-              onPress={() => this.props.navigation.navigate('Signup')}
-            >
-              Sign Up
-            </Text>
-          </View>
+          <Text
+            style={styles.anchorLink}
+            onPress={() => this.props.navigation.navigate('Signup')}
+          >
+            Sign Up
+          </Text>
         </View>
         <TouchableOpacity style={styles.submitWrapper}>
           <Text 

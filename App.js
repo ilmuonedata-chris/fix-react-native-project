@@ -4,44 +4,19 @@
  * @flow
  */
 
+// import { Provider } from 'react-redux';
+// import configureStore from './configureStore';
+import AppContainer from './AppContainer';
 import React, { Component } from 'react';
-import { isSignedIn } from "./auth";
-import { SignedOut, SignedIn, createRootNavigator } from "./router";
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      signedIn: false,
-      checkedSignIn: false
-    };
-  }
-
-  componentDidMount() {
-    isSignedIn()
-      .then(res => this.setState({ signedIn: res, checkedSignIn: true }))
-      .catch(err => alert("An error occurred"));
-  }
-
+class App extends Component {
   render() {
-    const { checkedSignIn, signedIn } = this.state;
-
-    // If we haven't checked AsyncStorage yet, don't render anything (better ways to do this)
-    if (!checkedSignIn) {
-      return null;
-    }
-
-    const Layout = createRootNavigator(signedIn);
-    return <Layout />;
-
-    // if (signedIn) {
-    //   return <SignedIn />;
-    // } else {
-    //   return <SignedOut />;
-    // }
-
+    return (
+      <AppContainer />
+    )
   }
 }
 
 console.disableYellowBox = true;
+
+export default App;

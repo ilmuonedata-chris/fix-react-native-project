@@ -101,6 +101,7 @@ export const SignedIn = TabNavigator({
   Home: {
     screen: HomeStack,
     navigationOptions: {
+      title: 'Home',
       tabBarIcon: ({ tintColor }) => (
         <Ionicons name="ios-home-outline" size={30} color={tintColor} />
       )
@@ -109,6 +110,7 @@ export const SignedIn = TabNavigator({
   Search: {
     screen: SearchStack,
     navigationOptions: {
+      title: 'Search',
       tabBarIcon: ({ tintColor }) => (
         <Ionicons name="ios-search-outline" size={30} color={tintColor} />
       )
@@ -117,6 +119,7 @@ export const SignedIn = TabNavigator({
   Profile: {
     screen: ProfileStack,
     navigationOptions: {
+      title: 'Profile',
       tabBarIcon: ({ tintColor }) => (
         <Ionicons name="ios-contact-outline" size={30} color={tintColor} />
       )
@@ -125,7 +128,7 @@ export const SignedIn = TabNavigator({
 },
 {
   tabBarOptions: {
-    showLabel: false,
+    // showLabel: false,
     activeTintColor: '#00b16e',
     tabStyle: {
       borderColor: 300

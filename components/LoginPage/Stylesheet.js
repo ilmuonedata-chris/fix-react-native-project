@@ -35,9 +35,6 @@ export default StyleSheet.create({
     fontWeight: '300',
     fontSize: 12,
   },
-  anchorWrapper: {
-    paddingLeft: 10,
-  },
   anchorLink: {
     fontFamily: 'Lato-Regular',
     color: '#006ce5',

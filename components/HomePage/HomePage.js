@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Material from 'react-native-vector-icons/MaterialIcons';
 import { 
   StyleSheet,
   Button,
@@ -6,7 +7,8 @@ import {
   TouchableOpacity,
   View,
   Text,
-  Image
+  Image,
+  ScrollView,
 } from 'react-native';
 import styles from './Stylesheet';
 
@@ -14,22 +16,103 @@ export default class HomePage extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = { 
-      email: '',
-      fname: '',
-      lname: '',
-      password: ''
+      lessonObj: [
+        {
+          id: 1,
+          subject: 'Bahasa Inggris',
+          type: 'PRIVATE',
+          teacherName: 'Christian Ing',
+          date: 'Tuesday, 27 April 2018',
+          timeStart: '09.00',
+          timeEnd: '10.30',
+        },
+        {
+          id: 2,
+          subject: 'Bahasa Inggris',
+          type: 'PRIVATE',
+          teacherName: 'Christian Ing',
+          date: 'Tuesday, 27 April 2018',
+          timeStart: '09.00',
+          timeEnd: '10.30',
+        },
+        {
+          id: 3,
+          subject: 'Bahasa Inggris',
+          type: 'PRIVATE',
+          teacherName: 'Christian Ing',
+          date: 'Tuesday, 27 April 2018',
+          timeStart: '09.00',
+          timeEnd: '10.30',
+        },
+        {
+          id: 4,
+          subject: 'Bahasa Inggris',
+          type: 'PRIVATE',
+          teacherName: 'Christian Ing',
+          date: 'Tuesday, 27 April 2018',
+          timeStart: '09.00',
+          timeEnd: '10.30',
+        }
+      ]
     };
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>This is HomePage</Text>
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Profile')}
-        />
+    const lessonItems = this.state.lessonObj.map(lesson => (
+      <View key={lesson.id} style={[styles.lessonWrapper]}>
+        <Text style={styles.dateLesson}>TODAY</Text>
+        <View style={styles.cardView}>
+          <View style={styles.cardLeft}>
+            <Text style={[styles.boldText, styles.subjectName]}>{lesson.subject}</Text>
+            <Text style={[styles.boldText, styles.teacherName]}>with {lesson.teacherName}</Text>
+            <View style={styles.badgeWrapper}>
+              <Text style={[styles.lessonType]}>{lesson.type}</Text>
+            </View>
+            <View style={styles.timeWrapper}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Material name="date-range" size={20} color={'#00b16e'} /> 
+                <Text style={[styles.fontLato, styles.greenTime]}>Tuesday, 27 April 2018</Text>
+              </View>
+              <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 5}}>
+                <Material name="access-time" size={20} color={'#00b16e'} /> 
+                <Text style={[styles.fontLato, styles.greenTime]}>{lesson.timeStart} - {lesson.timeEnd}</Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.cardRight}>
+            <Image
+              style={styles.roundedImg}
+              source={require('../../assets/images/starwars-me.jpg')}
+              resizeMode="contain"
+            />
+            <TouchableOpacity>
+              <Material name="more-vert" size={25} color={'#d6d6d6'} 
+                onPress={() => {
+                  console.log('heello')
+                }} 
+              /> 
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
+    ));
+
+    return (
+      <ScrollView style={styles.container}>
+        <Text style={[styles.header, styles.lightText]}>
+          <Text>Welcome,{' '}</Text>
+          <Text style={styles.userName}>Candice</Text>
+        </Text>
+        <View style={styles.scheduleWrapper}>
+          <View style={styles.textWrapper}>
+            <Text style={[styles.lightText, styles.upcomingText]}>Upcoming Schedule</Text>
+            <View style={styles.badge}>
+              <Text style={[styles.lightText, styles.rightText]}>2</Text>
+            </View>
+          </View>
+          { lessonItems }
+        </View>
+      </ScrollView>
     );
   }
 }
