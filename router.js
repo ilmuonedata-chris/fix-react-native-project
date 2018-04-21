@@ -103,7 +103,7 @@ export const SignedIn = TabNavigator({
     navigationOptions: {
       title: 'Home',
       tabBarIcon: ({ tintColor }) => (
-        <Ionicons name="ios-home-outline" size={30} color={tintColor} />
+        <Material name="home" size={30} color={tintColor} />
       )
     }
   },
@@ -112,7 +112,7 @@ export const SignedIn = TabNavigator({
     navigationOptions: {
       title: 'Search',
       tabBarIcon: ({ tintColor }) => (
-        <Ionicons name="ios-search-outline" size={30} color={tintColor} />
+        <Material name="search" size={30} color={tintColor} />
       )
     }
   },
@@ -121,20 +121,20 @@ export const SignedIn = TabNavigator({
     navigationOptions: {
       title: 'Profile',
       tabBarIcon: ({ tintColor }) => (
-        <Ionicons name="ios-contact-outline" size={30} color={tintColor} />
+        <Ionicons name="ios-contact" size={30} color={tintColor} />
       )
     }
   }
 },
 {
   tabBarOptions: {
-    // showLabel: false,
+    showLabel: false,
     activeTintColor: '#00b16e',
     tabStyle: {
       borderColor: 300
     },
     style: {
-      backgroundColor:'white',
+      backgroundColor:'#000',
     },
   }
 }
