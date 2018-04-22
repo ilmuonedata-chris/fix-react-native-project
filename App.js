@@ -4,15 +4,17 @@
  * @flow
  */
 
-// import { Provider } from 'react-redux';
-// import configureStore from './configureStore';
-import AppContainer from './AppContainer';
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
+import AppContainer from './AppContainer';
 
 class App extends Component {
   render() {
     return (
-      <AppContainer />
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
     )
   }
 }

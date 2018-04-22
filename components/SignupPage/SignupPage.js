@@ -9,8 +9,11 @@ import {
   Image
 } from 'react-native';
 import styles from './Stylesheet';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions'
 
-export default class SignupPage extends Component<{}> {
+class SignupPage extends Component {
   constructor(props) {
     super(props);
     this.state = { 
@@ -19,6 +22,27 @@ export default class SignupPage extends Component<{}> {
       lname: '',
       password: ''
     };
+
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit() {
+    const newUser = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    this.props.registerUser(newUser, this.onSuccess, this.onError)
+  }
+
+  onSuccess(data) {
+    console.log('Success!');
+    console.log(data);
+  }
+
+  onError(error) {
+    console.log('error');
+    console.log(error);
   }
 
   static navigationOptions = ({ navigation, navigationOptions }) => {
@@ -60,6 +84,7 @@ export default class SignupPage extends Component<{}> {
             value={this.state.email}
             placeholder="Email Address"
             placeholderTextColor="#b3b3b3"
+            autoCapitalize = 'none'
           />
           <TextInput
             underlineColorAndroid='transparent'
@@ -100,14 +125,16 @@ export default class SignupPage extends Component<{}> {
             </Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.submitWrapper}>
+        <TouchableOpacity style={styles.submitWrapper} onPress={this.onSubmit}>
           <Text style={styles.button}>SIGN UP</Text>
         </TouchableOpacity>
-        {/* <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Profile')}
-        /> */}
       </View>
     );
   }
 }
+
+SignupPage.propTypes = {
+  registerUser: PropTypes.func.isRequired
+};
+
+export default connect(null, { registerUser })(SignupPage);
