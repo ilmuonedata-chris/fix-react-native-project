@@ -26,13 +26,19 @@ class SignupPage extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit() {
+  async onSubmit() {
     const newUser = {
       email: this.state.email,
       password: this.state.password
     };
 
-    this.props.registerUser(newUser, this.onSuccess, this.onError)
+    try {
+      const response = await this.props.registerUser(newUser);
+      console.log('response: ' + JSON.stringify(response));
+    } catch (error) {
+      console.log('error: ' +  JSON.stringify(error));
+    }
+    // this.props.registerUser(newUser, this.onSuccess, this.onError)
   }
 
   onSuccess(data) {
@@ -70,6 +76,7 @@ class SignupPage extends Component {
   };
 
   render() {
+    const { isLoading } = this.props;
     return (
       <View style={styles.container}>
         <Image
@@ -126,7 +133,9 @@ class SignupPage extends Component {
           </View>
         </View>
         <TouchableOpacity style={styles.submitWrapper} onPress={this.onSubmit}>
-          <Text style={styles.button}>SIGN UP</Text>
+          <Text style={styles.button}>
+            {isLoading ? 'SUBMITTING...' : 'SIGN UP'}
+          </Text>
         </TouchableOpacity>
       </View>
     );
@@ -134,7 +143,12 @@ class SignupPage extends Component {
 }
 
 SignupPage.propTypes = {
-  registerUser: PropTypes.func.isRequired
+  registerUser: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
-export default connect(null, { registerUser })(SignupPage);
+const mapStateToProps = (state) => ({
+  isLoading: state.authReducer.isLoading
+});
+
+export default connect(mapStateToProps, { registerUser })(SignupPage);

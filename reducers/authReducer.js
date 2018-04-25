@@ -4,12 +4,13 @@ import * as t from '../actions/types';
 
 const initialState = { 
   isLoggedIn: false, 
-  user: null 
+  user: null,
+  isLoading: false,
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case t.LOGGED_IN:
+    case t.REGISTER_SUCCESS:
       const user = action.data;
 
       // Save token and data to Asyncstorage
@@ -17,9 +18,23 @@ const authReducer = (state = initialState, action) => {
           ['user', JSON.stringify(user)]
       ]);
 
-      state = Object.assign({}, state, { isLoggedIn: true, user: user });
-      console.log('state: ', state);
-      return state;
+      return Object.assign({}, state, { 
+        isLoggedIn: true,
+        user: user,
+        isLoading: false, 
+      });
+    
+    case t.IS_LOADING:
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+    
+    case t.REGISTER_ERROR:
+      const err = action.response;
+      return Object.assign({}, state, {
+        error: err,
+        isLoading: false,
+      });
       
     default:
       return state;
