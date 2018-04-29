@@ -43,15 +43,6 @@ export default class HomePage extends Component<{}> {
           date: 'Tuesday, 27 April 2018',
           timeStart: '09.00',
           timeEnd: '10.30',
-        },
-        {
-          id: 4,
-          subject: 'Bahasa Inggris',
-          type: 'PRIVATE',
-          teacherName: 'Christian Ing',
-          date: 'Tuesday, 27 April 2018',
-          timeStart: '09.00',
-          timeEnd: '10.30',
         }
       ]
     };
@@ -60,7 +51,6 @@ export default class HomePage extends Component<{}> {
   render() {
     const lessonItems = this.state.lessonObj.map(lesson => (
       <View key={lesson.id} style={[styles.lessonWrapper]}>
-        <Text style={styles.dateLesson}>TODAY</Text>
         <View style={styles.cardView}>
           <View style={styles.cardLeft}>
             <Text style={[styles.boldText, styles.subjectName]}>{lesson.subject}</Text>
@@ -101,13 +91,9 @@ export default class HomePage extends Component<{}> {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
-          <Text style={[styles.header, styles.lightText]}>
-            <Text>Welcome,{' '}</Text>
-            <Text style={styles.userName}>Candice</Text>
-          </Text>
           <View style={styles.scheduleWrapper}>
             <View style={styles.textWrapper}>
-              <Text style={[styles.lightText, styles.upcomingText]}>Upcoming Schedule</Text>
+              <Text style={[styles.boldText, styles.upcomingText]}>ENROLLED LESSONS</Text>
               <View style={styles.badge}>
                 <Text style={[styles.lightText, styles.rightText]}>2</Text>
               </View>

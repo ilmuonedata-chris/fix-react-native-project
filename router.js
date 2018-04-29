@@ -20,8 +20,7 @@ const headerStyling = {
   elevation: 0,
   shadowOpacity: 0,
   shadowColor: 'transparent',
-  borderBottomColor:'transparent',
-  borderBottomWidth: 0,
+  borderBottomColor:'#f3f3f3',
 };
 
 const headerTitleStyling = {
@@ -58,6 +57,7 @@ export const SignedOut = StackNavigator({
           />
         </View>
       ),
+      headerStyle: headerStyling,
     })
   },
 });
@@ -128,13 +128,12 @@ export const SignedIn = TabNavigator({
 },
 {
   tabBarOptions: {
-    // showLabel: false,
+    showLabel: false,
     activeTintColor: '#00b16e',
-    tabStyle: {
-      borderColor: 300
-    },
+    inactiveTintColor: '#c0c0c0',
     style: {
-      backgroundColor:'#f6f6f6',
+      backgroundColor:'white',
+      borderTopColor: '#f3f3f3'
     },
   },
   tabBarComponent: TabBarBottom,

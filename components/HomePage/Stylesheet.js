@@ -3,8 +3,6 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    paddingTop: 20,
-    paddingBottom: 20,
   },
   scrollView: {
     paddingLeft: 20,
@@ -37,26 +35,28 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom: 10,
   },
   upcomingText: {
-    letterSpacing: 1,
-    fontSize: 20,
+    letterSpacing: 2,
+    fontSize: 12,
     color: '#aaaaaa',
   },
   rightText: {
     fontWeight: '700',
     color: 'white',
+    fontSize: 12,
   },
   badge: {
     backgroundColor: '#00b16e',
     borderColor: '#00b16e',
     borderWidth: 1,
-    borderRadius: 10,
-    paddingTop: 5, paddingBottom: 5,
-    paddingLeft: 8, paddingRight: 8,
+    borderRadius: 15,
+    paddingTop: 3, paddingBottom: 3,
+    paddingLeft: 10, paddingRight: 10,
   },
   lessonWrapper: {
-    marginTop: 25,
+    marginBottom: 20,
     alignItems: 'center',
   },
   dateLesson: {
@@ -68,9 +68,9 @@ export default StyleSheet.create({
   },
   cardView: {
     width: '100%', // or use alignSelf: 'stretch'
-    borderWidth: 1,
-    borderColor: '#ebebeb',
-    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: '#eee',
+    borderRadius: 4,
     paddingTop: 15, paddingBottom: 15,
     paddingLeft: 20, paddingRight: 20,
     flexDirection: 'row',
