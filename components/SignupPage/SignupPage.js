@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container, Label, Input, Item } from 'native-base';
 import { 
   StyleSheet,
   Button,
@@ -20,7 +21,8 @@ class SignupPage extends Component {
       email: '',
       fname: '',
       lname: '',
-      password: ''
+      password: '',
+      confirmPass: '',
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -83,60 +85,70 @@ class SignupPage extends Component {
           style={{height: 150, width: 150}}
           source={require('../../assets/images/klaslogotext.png')}
         />
-        <View style={styles.inputWrapper}>
-          <TextInput
-            underlineColorAndroid='transparent'
-            style={[styles.input, styles.inputBorderBtm]} 
-            onChangeText={(email) => this.setState({email})}
-            value={this.state.email}
-            placeholder="Email Address"
-            placeholderTextColor="#b3b3b3"
-            autoCapitalize = 'none'
-          />
-          <TextInput
-            underlineColorAndroid='transparent'
-            style={[styles.input, styles.inputBorderBtm]} 
-            onChangeText={(fname) => this.setState({fname})}
-            value={this.state.fname}
-            placeholder="First Name"
-            placeholderTextColor="#b3b3b3"
-          />
-          <TextInput
-            underlineColorAndroid='transparent'
-            style={[styles.input, styles.inputBorderBtm]} 
-            onChangeText={(lname) => this.setState({lname})}
-            value={this.state.lname}
-            placeholder="Last Name"
-            placeholderTextColor="#b3b3b3"
-          />
-          <TextInput
-            underlineColorAndroid='transparent'
-            style={styles.input} 
-            onChangeText={(password) => this.setState({password})}
-            value={this.state.password}
-            placeholder="Password"
-            placeholderTextColor="#b3b3b3"
-            secureTextEntry={true}
-          />
-        </View>
-        <View style={styles.textWrapper}>
-          <Text style={styles.lightText}>
-            Already have an account?
-          </Text>
-          <View style={styles.anchorWrapper}>
-            <Text
-              style={styles.anchorLink}
-              onPress={() => this.props.navigation.goBack()}
-            >
-              Log in
-            </Text>
+        <View style={styles.formWrapper}>
+          <View style={styles.itemWrapper}>
+            <Item style={styles.customItem} stackedLabel error={false}>
+              <Label style={styles.formLabel}>EMAIL ADDRESS</Label>
+              <TextInput
+                underlineColorAndroid='transparent'
+                style={[styles.formInput]} 
+                onChangeText={(email) => this.setState({email})}
+                value={this.state.email}
+                placeholder="Email Address"
+                placeholderTextColor="#b3b3b3"
+                autoCapitalize = 'none'
+              />
+            </Item>
+            {/* <Text style={styles.errorMessage}>This is an error</Text> */}
+          </View>
+          <View style={styles.itemWrapper}>
+            <Item style={styles.customItem} stackedLabel>
+              <Label style={styles.formLabel}>PASSWORD</Label>
+              <TextInput
+                underlineColorAndroid='transparent'
+                style={[styles.formInput]} 
+                onChangeText={(password) => this.setState({password})}
+                value={this.state.password}
+                placeholder="Password (min. 6 characters)"
+                placeholderTextColor="#b3b3b3"
+                secureTextEntry={true}
+              />
+            </Item>
+            {/* <Text style={styles.errorMessage}>This is an error</Text> */}
+          </View>
+          <View style={styles.itemWrapper}>
+            <Item style={styles.customItem} stackedLabel>
+              <Label style={styles.formLabel}>CONFIRM PASSWORD</Label>
+              <TextInput
+                underlineColorAndroid='transparent'
+                style={[styles.formInput]} 
+                onChangeText={(confirmPass) => this.setState({confirmPass})}
+                value={this.state.confirmPass}
+                placeholder="Confirm Password"
+                placeholderTextColor="#b3b3b3"
+                secureTextEntry={true}
+              />
+            </Item>
+            {/* <Text style={styles.errorMessage}>This is an error</Text> */}
           </View>
         </View>
+        
         <TouchableOpacity style={styles.submitWrapper} onPress={this.onSubmit}>
           <Text style={styles.button}>
             {isLoading ? 'SUBMITTING...' : 'SIGN UP'}
           </Text>
         </TouchableOpacity>
+        <View style={styles.textWrapper}>
+          <Text style={styles.lightText}>
+            Already have an account? {'  '}
+          </Text>
+          <Text
+            style={styles.anchorLink}
+            onPress={() => this.props.navigation.goBack()}
+          >
+            Log in
+          </Text>
+        </View>
       </View>
     );
   }

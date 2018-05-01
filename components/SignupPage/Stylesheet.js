@@ -5,6 +5,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
+    paddingLeft: 30,
+    paddingRight: 30,
   },
   fontLato: {
     fontFamily: 'Lato-Regular',
@@ -19,24 +21,10 @@ export default StyleSheet.create({
     textAlign: 'center',
     width: 320,
   },
-  textWrapper: {
-    marginTop: 12,
-    flexDirection: 'row',
-  },
-  submitWrapper: {
-    marginTop: 40,
-    borderRadius: 30,
-    borderColor: 'transparent',
-    backgroundColor: '#00b16e',
-    borderWidth: 1,
-  },
   lightText: {
     fontFamily: 'Lato-Regular',
     fontWeight: '300',
     fontSize: 12,
-  },
-  anchorWrapper: {
-    paddingLeft: 10,
   },
   anchorLink: {
     fontFamily: 'Lato-Regular',
@@ -57,9 +45,44 @@ export default StyleSheet.create({
     borderColor: '#eeeeee',
     borderBottomWidth: 1,
   },
-  inputWrapper: {
-    borderColor: '#eeeeee',
+  formWrapper: {
+    width: '100%',
+    marginTop: 10,
+  },
+  formLabel: {
+    fontFamily: 'Lato-Regular',
+    fontSize: 12,
+    letterSpacing: 2,
+    color: '#b3b3b3'
+  },
+  formInput: {
+    paddingTop: 15,
+    fontFamily: 'Lato-Regular',
+    fontSize: 12,
+    width: '100%',
+  },
+  itemWrapper: {
+    marginBottom: 15,
+  },
+  customItem: {
+    borderBottomWidth: 1,
+    height: 55,
+  },
+  errorMessage: {
+    color: '#ed2f2f',
+    fontFamily: 'Lato-Regular',
+    fontSize: 12,
+    marginTop: 5,
+  },
+  submitWrapper: {
+    marginTop: 20,
+    borderRadius: 30,
+    borderColor: 'transparent',
+    backgroundColor: '#00b16e',
     borderWidth: 1,
-    borderRadius: 5,
+  },
+  textWrapper: {
+    marginTop: 10,
+    flexDirection: 'row',
   },
 });
