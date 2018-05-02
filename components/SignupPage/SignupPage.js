@@ -9,6 +9,7 @@ import {
   Text,
   Image
 } from 'react-native';
+import commonStyles from '../../common/CommonStyleSheet';
 import styles from './Stylesheet';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -101,16 +102,16 @@ class SignupPage extends Component {
     return (
       <View style={styles.container}>
         <Image
-          style={{height: 150, width: 150}}
+          style={styles.imageLogo}
           source={require('../../assets/images/klaslogotext.png')}
         />
         <View style={styles.formWrapper}>
-          <View style={styles.itemWrapper}>
-            <Item style={styles.customItem} stackedLabel error={errors.email ? true : false}>
-              <Label style={styles.formLabel}>EMAIL ADDRESS</Label>
+          <View style={commonStyles.itemWrapper}>
+            <Item style={commonStyles.customItem} stackedLabel error={errors.email ? true : false}>
+              <Label style={commonStyles.formLabel}>EMAIL ADDRESS</Label>
               <TextInput
                 underlineColorAndroid='transparent'
-                style={[styles.formInput]} 
+                style={[commonStyles.formInput]} 
                 onChangeText={(email) => this.setState({email})}
                 value={this.state.email}
                 placeholder="Email Address"
@@ -118,16 +119,16 @@ class SignupPage extends Component {
                 autoCapitalize = 'none'
               />
             </Item>
-            <Text style={styles.errorMessage}>
+            <Text style={commonStyles.errorMessage}>
               { errors.email ? errors.email : ''}
             </Text>
           </View>
-          <View style={styles.itemWrapper}>
-            <Item style={styles.customItem} stackedLabel error={errors.password ? true : false}>
-              <Label style={styles.formLabel}>PASSWORD</Label>
+          <View style={commonStyles.itemWrapper}>
+            <Item style={commonStyles.customItem} stackedLabel error={errors.password ? true : false}>
+              <Label style={commonStyles.formLabel}>PASSWORD</Label>
               <TextInput
                 underlineColorAndroid='transparent'
-                style={[styles.formInput]} 
+                style={[commonStyles.formInput]} 
                 onChangeText={(password) => this.setState({password})}
                 value={this.state.password}
                 placeholder="Password (min. 6 characters)"
@@ -135,16 +136,16 @@ class SignupPage extends Component {
                 secureTextEntry={true}
               />
             </Item>
-            <Text style={styles.errorMessage}>
+            <Text style={commonStyles.errorMessage}>
               { errors.password ? errors.password : ''}
             </Text>
           </View>
-          <View style={styles.itemWrapper}>
-            <Item style={styles.customItem} stackedLabel error={errors.confirmPass ? true : false}>
-              <Label style={styles.formLabel}>CONFIRM PASSWORD</Label>
+          <View style={commonStyles.itemWrapper}>
+            <Item style={commonStyles.customItem} stackedLabel error={errors.confirmPass ? true : false}>
+              <Label style={commonStyles.formLabel}>CONFIRM PASSWORD</Label>
               <TextInput
                 underlineColorAndroid='transparent'
-                style={[styles.formInput]} 
+                style={[commonStyles.formInput]} 
                 onChangeText={(confirmPass) => this.setState({confirmPass})}
                 value={this.state.confirmPass}
                 placeholder="Confirm Password"
@@ -152,7 +153,7 @@ class SignupPage extends Component {
                 secureTextEntry={true}
               />
             </Item>
-            <Text style={styles.errorMessage}>
+            <Text style={commonStyles.errorMessage}>
               { errors.confirmPass ? errors.confirmPass : ''}
             </Text>
           </View>

@@ -1,5 +1,7 @@
-import { StyleSheet } from 'react-native';
-export default StyleSheet.create({
+// import { StyleSheet } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
+
+export default ScaledSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
@@ -10,8 +12,18 @@ export default StyleSheet.create({
     fontFamily: 'Lato-Regular',
   },
   imageLogo: {
-    height: 150, 
-    width: 150,
+    height: '160@vs', 
+    width: '160@ms',
+  },
+  fieldWrapper: {
+    marginTop: '20@s',
+  },
+  submitWrapper: {
+    marginTop: '10@vs',
+    borderRadius: 30,
+    borderColor: 'transparent',
+    backgroundColor: '#00b16e',
+    borderWidth: 1,
   },
   button: {
     fontFamily: 'Lato-Regular',
@@ -21,46 +33,21 @@ export default StyleSheet.create({
     lineHeight: 30,
     padding: 10,
     textAlign: 'center',
-    width: 320,
+    width: '280@ms0.8',
   },
   textWrapper: {
     marginTop: 12,
     flexDirection: 'row',
   },
-  submitWrapper: {
-    marginTop: 40,
-    borderRadius: 30,
-    borderColor: 'transparent',
-    backgroundColor: '#00b16e',
-    borderWidth: 1,
-  },
   lightText: {
     fontFamily: 'Lato-Regular',
     fontWeight: '300',
-    fontSize: 12,
+    fontSize: '12@ms',
   },
   anchorLink: {
     fontFamily: 'Lato-Regular',
     color: '#006ce5',
     fontWeight: '400',
-    fontSize: 12,
-  },
-  input: {
-    width: 320,
-    fontFamily: 'Lato-Regular',
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingRight: 20,
-    paddingLeft: 20,
-    paddingVertical: 0, // for android
-  },
-  inputBorderBtm: {
-    borderColor: '#eeeeee',
-    borderBottomWidth: 1,
-  },
-  inputWrapper: {
-    borderColor: '#eeeeee',
-    borderWidth: 1,
-    borderRadius: 5,
+    fontSize: '12@ms',
   },
 });
