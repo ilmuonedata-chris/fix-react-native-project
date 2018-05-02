@@ -13,6 +13,7 @@
     "react-native": "0.55.1",
     "react-native-ionicons": "^0.2.1",
     "react-native-redux-listener": "^0.3.0",
+    "react-native-size-matters": "^0.1.0",
     "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^1.5.11",
     "react-redux": "^5.0.7",
