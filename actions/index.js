@@ -21,7 +21,7 @@ export function registerUser(data) {
     dispatch(checkingStatus());
 
     try {
-      const registerApi = await api.register(data);
+      const registerApi = await auth.createUserWithEmailAndPassword(data.email, data.password);;
       return dispatch(registerSuccess(registerApi));
     } catch (error) {
       return dispatch(registerError(error));

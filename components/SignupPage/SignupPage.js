@@ -12,6 +12,7 @@ import {
 import styles from './Stylesheet';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { validateForm } from '../../config/api';
 import { registerUser } from '../../actions'
 
 class SignupPage extends Component {
@@ -19,28 +20,44 @@ class SignupPage extends Component {
     super(props);
     this.state = { 
       email: '',
-      fname: '',
-      lname: '',
       password: '',
       confirmPass: '',
+      errors: {},
     };
 
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  async onSubmit() {
-    const newUser = {
-      email: this.state.email,
-      password: this.state.password
-    };
+  formValidation() {
+    const { errors, isValid } = validateForm(this.state);
 
-    try {
-      const response = await this.props.registerUser(newUser);
-      console.log('response: ' + JSON.stringify(response));
-    } catch (error) {
-      console.log('error: ' +  JSON.stringify(error));
+    if(!isValid) {
+      this.setState({ errors }, function () {
+        console.log(this.state);
+      });
     }
-    // this.props.registerUser(newUser, this.onSuccess, this.onError)
+    
+    return isValid;
+  }
+
+  async onSubmit() {
+    if(this.formValidation()){
+      const newUser = {
+        email: this.state.email,
+        password: this.state.password,
+        confirmPass: this.state.confirmPass,
+      };
+  
+      try {
+        const response = await this.props.registerUser(newUser);
+        console.log('response: ' + JSON.stringify(response));
+      } catch (error) {
+        console.log('error: ' +  JSON.stringify(error));
+      }
+      console.log('no error on client side');
+    } else {
+      console.log('Error!');
+    }
   }
 
   onSuccess(data) {
@@ -79,6 +96,8 @@ class SignupPage extends Component {
 
   render() {
     const { isLoading } = this.props;
+    const { errors } = this.state;
+
     return (
       <View style={styles.container}>
         <Image
@@ -87,7 +106,7 @@ class SignupPage extends Component {
         />
         <View style={styles.formWrapper}>
           <View style={styles.itemWrapper}>
-            <Item style={styles.customItem} stackedLabel error={false}>
+            <Item style={styles.customItem} stackedLabel error={errors.email ? true : false}>
               <Label style={styles.formLabel}>EMAIL ADDRESS</Label>
               <TextInput
                 underlineColorAndroid='transparent'
@@ -99,10 +118,12 @@ class SignupPage extends Component {
                 autoCapitalize = 'none'
               />
             </Item>
-            {/* <Text style={styles.errorMessage}>This is an error</Text> */}
+            <Text style={styles.errorMessage}>
+              { errors.email ? errors.email : ''}
+            </Text>
           </View>
           <View style={styles.itemWrapper}>
-            <Item style={styles.customItem} stackedLabel>
+            <Item style={styles.customItem} stackedLabel error={errors.password ? true : false}>
               <Label style={styles.formLabel}>PASSWORD</Label>
               <TextInput
                 underlineColorAndroid='transparent'
@@ -114,10 +135,12 @@ class SignupPage extends Component {
                 secureTextEntry={true}
               />
             </Item>
-            {/* <Text style={styles.errorMessage}>This is an error</Text> */}
+            <Text style={styles.errorMessage}>
+              { errors.password ? errors.password : ''}
+            </Text>
           </View>
           <View style={styles.itemWrapper}>
-            <Item style={styles.customItem} stackedLabel>
+            <Item style={styles.customItem} stackedLabel error={errors.confirmPass ? true : false}>
               <Label style={styles.formLabel}>CONFIRM PASSWORD</Label>
               <TextInput
                 underlineColorAndroid='transparent'
@@ -129,7 +152,9 @@ class SignupPage extends Component {
                 secureTextEntry={true}
               />
             </Item>
-            {/* <Text style={styles.errorMessage}>This is an error</Text> */}
+            <Text style={styles.errorMessage}>
+              { errors.confirmPass ? errors.confirmPass : ''}
+            </Text>
           </View>
         </View>
         

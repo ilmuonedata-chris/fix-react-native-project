@@ -62,11 +62,11 @@ export default StyleSheet.create({
     width: '100%',
   },
   itemWrapper: {
-    marginBottom: 15,
+    marginBottom: 10,
   },
   customItem: {
     borderBottomWidth: 1,
-    height: 55,
+    height: 60,
   },
   errorMessage: {
     color: '#ed2f2f',
