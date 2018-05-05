@@ -14,6 +14,7 @@ import SignupPage from './components/SignupPage/SignupPage';
 import HomePage from './components/HomePage/HomePage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import SearchPage from './components/SearchPage/SearchPage';
+import DiscoverPage from './components/DiscoverPage/DiscoverPage';
 
 const headerStyling = {
   backgroundColor: '#fff',
@@ -82,6 +83,25 @@ const SearchStack = StackNavigator({
       headerStyle: headerStyling,
       headerTitleStyle: headerTitleStyling
     }
+  },
+  Discover: {
+    screen: DiscoverPage,
+    navigationOptions: ({navigation}) => ({
+      headerLeft: (
+        <View style={{marginLeft: 20}}>
+          <Material 
+            name="keyboard-backspace"
+            backgroundColor="transparent"
+            size={30}
+            color="#cdccd8" 
+            onPress={() => {
+              navigation.goBack()
+            }}
+          />
+        </View>
+      ),
+      headerStyle: headerStyling,
+    })
   }
 });
 

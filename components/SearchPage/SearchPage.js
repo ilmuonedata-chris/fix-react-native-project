@@ -83,7 +83,8 @@ export default class SearchPage extends Component<{}> {
         </View>
 
         <View style={styles.buttonWrapper}>
-          <Button rounded style={styles.discoverBtn}>
+          <Button rounded style={styles.discoverBtn}
+          onPress={() => this.props.navigation.navigate('Discover')}>
             <Text style={styles.discoverText}>Discover</Text>
           </Button>
         </View>
