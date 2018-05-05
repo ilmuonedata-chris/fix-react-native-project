@@ -10,6 +10,10 @@ export default ScaledSheet.create({
     fontWeight: '300',
     fontSize: '12@ms',
   },
+  boldText: {
+    fontFamily: 'Lato-Regular',
+    fontWeight: '700',
+  },
   itemWrapper: {
     marginBottom: 10,
   },
