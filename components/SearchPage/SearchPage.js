@@ -1,70 +1,93 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
+import { Icon, Text, Input, Item, Button } from 'native-base';
+import Material from 'react-native-vector-icons/MaterialIcons';
+import { 
   TextInput,
+  TouchableOpacity,
   View,
-  Button,
-  ActivityIndicator,
   Image,
+  ScrollView,
 } from 'react-native';
+import commonStyles from '../../common/CommonStyleSheet';
+import styles from './Stylesheet';
 
 export default class SearchPage extends Component<{}> {
-  static navigationOptions = {
-    title: 'Property Finder',
-  };
+  constructor(props) {
+    super(props);
+    this.state = { 
+      lessonObj: [
+        {
+          id: 1,
+          name: 'Matematika',
+        },
+        {
+          id: 2,
+          name: 'Bahasa Inggris',
+        },
+        {
+          id: 3,
+          name: 'C++',
+        },
+        {
+          id: 4,
+          name: 'Programming',
+        },
+        {
+          id: 5,
+          name: 'France',
+        },
+        {
+          id: 6,
+          name: 'Language',
+        },
+        {
+          id: 7,
+          name: 'Japanese',
+        },
+        {
+          id: 8,
+          name: 'Guitar',
+        },
+        {
+          id: 9,
+          name: 'Drums',
+        },
+        {
+          id: 10,
+          name: 'React Native',
+        },
+      ]
+    }
+  }
 
   render() {
+    const lessonItems = this.state.lessonObj.map(lesson => (
+      <Button key={lesson.id} rounded style={styles.buttonLesson}>
+        <Text style={[commonStyles.fontLato, {color: '#00b16e'}]}>{lesson.name}</Text>
+      </Button>
+    ));
     return (
       <View style={styles.container}>
-        <Text style={styles.description}>
-          Search for houses to buy!
-        </Text>
-        <Text style={styles.description}>
-          Search by place-name or postcode.
-        </Text>
-        <View style={styles.flowRight}>
-          <TextInput
-            underlineColorAndroid={'transparent'}
-            style={styles.searchInput}
-            placeholder='Search via name or postcode'/>
-          <Button
-            onPress={() => {}}
-            color='#48BBEC'
-            title='Go'
-          />
+        <View style={styles.textWrapper}>
+          <Text style={[commonStyles.boldText, styles.topText]}>What are your</Text>
+          <Text style={[commonStyles.boldText, styles.topText]}>interests?</Text>
+        </View>
+
+        <Item rounded>
+          <Icon name="ios-search" />
+          <Input style={styles.searchBar} placeholder="Filter lessons" />
+        </Item>
+
+        <View style={styles.lessonWrapper}>
+          { lessonItems }
+        </View>
+
+        <View style={styles.buttonWrapper}>
+          <Button rounded style={styles.discoverBtn}>
+            <Text style={styles.discoverText}>Discover</Text>
+          </Button>
         </View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  description: {
-    marginBottom: 20,
-    fontSize: 18,
-    textAlign: 'center',
-    color: '#656565'
-  },
-  container: {
-    padding: 30,
-    marginTop: 65,
-    alignItems: 'center'
-  },
-  flowRight: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'stretch',
-  },
-  searchInput: {
-    height: 36,
-    padding: 15,
-    marginRight: 5,
-    flexGrow: 1,
-    fontSize: 18,
-    borderWidth: 1,
-    borderColor: '#48BBEC',
-    borderRadius: 8,
-    color: '#48BBEC',
-  },
-});
