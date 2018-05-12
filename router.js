@@ -15,6 +15,7 @@ import HomePage from './components/HomePage/HomePage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import SearchPage from './components/SearchPage/SearchPage';
 import DiscoverPage from './components/DiscoverPage/DiscoverPage';
+import TeacherPage from './components/TeacherPage/TeacherPage';
 
 const headerStyling = {
   backgroundColor: '#fff',
@@ -107,6 +108,39 @@ const SearchStack = StackNavigator({
             backgroundColor="transparent"
             size={30}
             color="#cdccd8" 
+            onPress={() => {
+              navigation.goBack()
+            }}
+          />
+        </View>
+      ),
+      headerStyle: headerStyling,
+      tabBarVisible: false,
+    })
+  },
+  Teacher: {
+    screen: TeacherPage,
+    navigationOptions: ({navigation}) => ({
+      headerLeft: (
+        <View style={{marginLeft: 20}}>
+          <Material 
+            name="keyboard-backspace"
+            backgroundColor="transparent"
+            size={30}
+            color="#cdccd8" 
+            onPress={() => {
+              navigation.goBack()
+            }}
+          />
+        </View>
+      ),
+      headerRight: (
+        <View style={{marginRight: 20}}>
+          <Material 
+            name="bookmark-border"
+            backgroundColor="transparent"
+            size={30}
+            color="#00b16e" 
             onPress={() => {
               navigation.goBack()
             }}

@@ -4,6 +4,7 @@ import { ScaledSheet } from 'react-native-size-matters';
 export default ScaledSheet.create({
   fontLato: {
     fontFamily: 'Lato-Regular',
+    fontWeight: '400',
   },
   lightText: {
     fontFamily: 'Lato-Regular',

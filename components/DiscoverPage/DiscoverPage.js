@@ -12,6 +12,9 @@ import commonStyles from '../../common/CommonStyleSheet';
 import styles from './Stylesheet';
 
 export default class DiscoverPage extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
@@ -89,7 +92,8 @@ export default class DiscoverPage extends Component {
                     <Text style={[commonStyles.boldText, styles.price]}>145k{'  '}</Text>
                     <Text style={[commonStyles.lightText, styles.additional]}>/ lesson</Text>
                   </Text>
-                  <Button rounded style={{backgroundColor: '#00b16e', height: 30}}>
+                  <Button rounded style={{backgroundColor: '#00b16e', height: 30}}
+                  onPress={() => { this.props.navigation.navigate('Teacher') }}>
                     <Text style={[commonStyles.boldText, {color: 'white', height: 15, fontSize: 12}]}>Select</Text>
                   </Button>
                 </View>
