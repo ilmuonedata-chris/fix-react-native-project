@@ -100,7 +100,21 @@ const SearchStack = StackNavigator({
           />
         </View>
       ),
+      headerRight: (
+        <View style={{marginRight: 20}}>
+          <Material 
+            name="tune"
+            backgroundColor="transparent"
+            size={30}
+            color="#cdccd8" 
+            onPress={() => {
+              navigation.goBack()
+            }}
+          />
+        </View>
+      ),
       headerStyle: headerStyling,
+      tabBarVisible: false,
     })
   }
 });
