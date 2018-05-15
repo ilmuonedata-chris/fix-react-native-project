@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { 
   View, 
   Text,
@@ -6,12 +6,12 @@ import {
   Image,
   TouchableOpacity,
   Animated,
-} from 'react-native'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+} from 'react-native';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Material from 'react-native-vector-icons/MaterialIcons';
-import styles from './Stylesheet'
-import commonStyles from '../../common/CommonStyleSheet'
+import styles from './Stylesheet';
+import commonStyles from '../../common/CommonStyleSheet';
 
 export class TeacherPage extends Component {
 
@@ -139,7 +139,8 @@ export class TeacherPage extends Component {
             <Text style={[commonStyles.lightText, {fontSize: 14, color: 'white'}]}>{' '}/ lesson</Text>
           </Text>
 
-          <TouchableOpacity style={[styles.roundedBtn, {borderColor: 'white', backgroundColor: 'transparent'}]}>
+          <TouchableOpacity style={[styles.roundedBtn, {borderColor: 'white', backgroundColor: 'transparent'}]}
+          onPress={() => { this.props.navigation.navigate('Schedule') }}>
             <Text style={[commonStyles.boldText, styles.btnText, styles.scheduleBtnText]}>SCHEDULE SESSION</Text>
           </TouchableOpacity>
         </View>

@@ -16,6 +16,7 @@ import ProfilePage from './components/ProfilePage/ProfilePage';
 import SearchPage from './components/SearchPage/SearchPage';
 import DiscoverPage from './components/DiscoverPage/DiscoverPage';
 import TeacherPage from './components/TeacherPage/TeacherPage';
+import SchedulePage from './components/SchedulePage/SchedulePage';
 
 const headerStyling = {
   backgroundColor: '#fff',
@@ -33,6 +34,23 @@ const headerTitleStyling = {
   color: '#7a7a7a',
 };
 
+// Template for custom back btn on headerLeft
+const customBackBtn = (navigation) => {
+  return (
+    <View style={{marginLeft: 20}}>
+      <Material 
+        name="keyboard-backspace"
+        backgroundColor="transparent"
+        size={30}
+        color="#cdccd8" 
+        onPress={() => {
+          navigation.goBack()
+        }}
+      />
+    </View>
+  );
+};
+
 // SignedOut Pages or First Landing Page
 export const SignedOut = StackNavigator({
   Login: {
@@ -46,19 +64,7 @@ export const SignedOut = StackNavigator({
   Signup: {
     screen: SignupPage,
     navigationOptions: ({navigation}) => ({
-      headerLeft: (
-        <View style={{marginLeft: 20}}>
-          <Material 
-            name="keyboard-backspace"
-            backgroundColor="transparent"
-            size={30}
-            color="#cdccd8" 
-            onPress={() => {
-              navigation.goBack()
-            }}
-          />
-        </View>
-      ),
+      headerLeft: (customBackBtn(navigation)),
       headerStyle: headerStyling,
     })
   },
@@ -88,19 +94,7 @@ const SearchStack = StackNavigator({
   Discover: {
     screen: DiscoverPage,
     navigationOptions: ({navigation}) => ({
-      headerLeft: (
-        <View style={{marginLeft: 20}}>
-          <Material 
-            name="keyboard-backspace"
-            backgroundColor="transparent"
-            size={30}
-            color="#cdccd8" 
-            onPress={() => {
-              navigation.goBack()
-            }}
-          />
-        </View>
-      ),
+      headerLeft: (customBackBtn(navigation)),
       headerRight: (
         <View style={{marginRight: 20}}>
           <Material 
@@ -121,19 +115,7 @@ const SearchStack = StackNavigator({
   Teacher: {
     screen: TeacherPage,
     navigationOptions: ({navigation}) => ({
-      headerLeft: (
-        <View style={{marginLeft: 20}}>
-          <Material 
-            name="keyboard-backspace"
-            backgroundColor="transparent"
-            size={30}
-            color="#cdccd8" 
-            onPress={() => {
-              navigation.goBack()
-            }}
-          />
-        </View>
-      ),
+      headerLeft: (customBackBtn(navigation)),
       headerRight: (
         <View style={{marginRight: 20}}>
           <Material 
@@ -147,6 +129,14 @@ const SearchStack = StackNavigator({
           />
         </View>
       ),
+      headerStyle: headerStyling,
+      tabBarVisible: false,
+    })
+  },
+  Schedule: {
+    screen: SchedulePage,
+    navigationOptions: ({navigation}) => ({
+      headerLeft: (customBackBtn(navigation)),
       headerStyle: headerStyling,
       tabBarVisible: false,
     })
@@ -164,8 +154,28 @@ const ProfileStack = StackNavigator({
   },
 });
 
+// FOR TESTING PURPOSE ONLY - DELETE BEFORE DEPLOYMENT!!!
+const CurrentStack = StackNavigator({
+  Schedule: {
+    screen: SchedulePage,
+    navigationOptions: ({navigation}) => ({
+      headerStyle: headerStyling,
+    })
+  }
+});
+// FOR TESTING PURPOSE ONLY - DELETE BEFORE DEPLOYMENT!!!
+
 // Pages after signed in
 export const SignedIn = TabNavigator({
+  Schedule: {
+    screen: CurrentStack,
+    navigationOptions: {
+      title: 'Schedule',
+      tabBarIcon: ({ tintColor }) => (
+        <Material name="dashboard" size={30} color={tintColor} />
+      )
+    }
+  },
   Home: {
     screen: HomeStack,
     navigationOptions: {
@@ -192,7 +202,7 @@ export const SignedIn = TabNavigator({
         <Ionicons name="ios-contact" size={30} color={tintColor} />
       )
     }
-  }
+  },
 },
 {
   tabBarOptions: {
