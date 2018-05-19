@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Container, Label, Input, Item } from 'native-base';
 import { 
   StyleSheet,
@@ -9,12 +9,12 @@ import {
   Text,
   Image
 } from 'react-native';
-import commonStyles from '../../common/CommonStyleSheet';
+import commonStyles from '../../../common/CommonStyleSheet';
 import styles from './Stylesheet';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { validateForm } from '../../config/api';
-import { registerUser } from '../../actions'
+import { validateForm } from '../../../config/api';
+import { registerUser } from '../../../actions'
 
 class SignupPage extends Component {
   constructor(props) {
@@ -29,54 +29,11 @@ class SignupPage extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  formValidation() {
-    const { errors, isValid } = validateForm(this.state);
-
-    if(!isValid) {
-      this.setState({ errors }, function () {
-        console.log(this.state);
-      });
-    }
-    
-    return isValid;
-  }
-
-  async onSubmit() {
-    if(this.formValidation()){
-      this.setState({ errors: {} });
-      const newUser = {
-        email: this.state.email,
-        password: this.state.password,
-        confirmPass: this.state.confirmPass,
-      };
-  
-      try {
-        const response = await this.props.registerUser(newUser);
-        console.log('response from signup: ' + JSON.stringify(response));
-      } catch (error) {
-        console.log('error: ' +  JSON.stringify(error));
-      }
-      console.log('no error on client side');
-    } else {
-      console.log('Error!');
-    }
-  }
-
-  onSuccess(data) {
-    console.log('Success!');
-    console.log(data);
-  }
-
-  onError(error) {
-    console.log('error');
-    console.log(error);
-  }
-
   static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
 
     return {
-      title: 'CREATE ACCOUNT',
+      title: 'CREATE TEACHER ACCOUNT',
       /* These values are used instead of the shared configuration! */
       headerStyle: {
         backgroundColor: '#fff',
@@ -96,15 +53,56 @@ class SignupPage extends Component {
     };
   };
 
+  formValidation() {
+    const { errors, isValid } = validateForm(this.state);
+
+    if(!isValid) {
+      this.setState({ errors }, function () {
+        console.log(this.state);
+      });
+    }
+    
+    return isValid;
+  }
+
+  async onSubmit() {
+    if(this.formValidation()){
+      const newUser = {
+        email: this.state.email,
+        password: this.state.password,
+        confirmPass: this.state.confirmPass,
+      };
+  
+      try {
+        const response = await this.props.registerUser(newUser);
+        console.log('response: ' + JSON.stringify(response));
+      } catch (error) {
+        console.log('error: ' +  JSON.stringify(error));
+      }
+      console.log('no error on client side');
+    } else {
+      console.log('Error!');
+    }
+  }
+
+  onSuccess(data) {
+    console.log('Success!');
+    console.log(data);
+  }
+
+  onError(error) {
+    console.log('error');
+    console.log(error);
+  }
+
   render() {
     const { isLoading } = this.props;
     const { errors } = this.state;
-
     return (
       <View style={styles.container}>
         <Image
           style={styles.imageLogo}
-          source={require('../../assets/images/klaslogotext.png')}
+          source={require('../../../assets/images/klaslogotext.png')}
         />
         <View style={styles.formWrapper}>
           <View style={commonStyles.itemWrapper}>
@@ -165,27 +163,8 @@ class SignupPage extends Component {
             {isLoading ? 'SUBMITTING...' : 'SIGN UP'}
           </Text>
         </TouchableOpacity>
-        <View style={styles.textWrapper}>
-          <Text style={styles.lightText}>
-            Already have an account? {'  '}
-          </Text>
-          <Text
-            style={styles.anchorLink}
-            onPress={() => this.props.navigation.goBack()}
-          >
-            Log in
-          </Text>
-        </View>
-        <View style={styles.textWrapper}>
-          <Text
-            style={styles.anchorLink}
-            onPress={() => this.props.navigation.navigate('TeacherSignup')}
-          >
-            Teacher Signup
-          </Text>
-        </View>
       </View>
-    );
+    )
   }
 }
 

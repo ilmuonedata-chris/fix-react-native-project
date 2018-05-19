@@ -11,6 +11,23 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case t.REGISTER_SUCCESS:
+      return Object.assign({}, state, { 
+        isLoading: false, 
+      });
+    
+    case t.IS_LOADING:
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+    
+    case t.AUTH_ERROR:
+      const err = action.response;
+      return Object.assign({}, state, {
+        error: err,
+        isLoading: false,
+      });
+
+    case t.LOGIN_SUCCESS:
       const user = action.data;
 
       // Save token and data to Asyncstorage
@@ -24,15 +41,10 @@ const authReducer = (state = initialState, action) => {
         isLoading: false, 
       });
     
-    case t.IS_LOADING:
+    case t.LOGGED_OUT:
       return Object.assign({}, state, {
-        isLoading: true
-      });
-    
-    case t.REGISTER_ERROR:
-      const err = action.response;
-      return Object.assign({}, state, {
-        error: err,
+        isLoggedIn: false, 
+        user: null,
         isLoading: false,
       });
       

@@ -42,8 +42,9 @@ export const validateForm = (data) => {
     errors.confirmPass = 'password must match';
   }
 
-  if(errors.length === 0) {
+  if(Object.keys(errors).length === 0) {
     isValid = true;
+    console.log('PASSED! from api.js');
   }
 
   return {
