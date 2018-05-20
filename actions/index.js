@@ -12,7 +12,19 @@ export function registerUser(data) {
     try {
       const registerApi = await auth.createUserWithEmailAndPassword(data.email, data.password);
       dispatch(registerSuccess(registerApi));
-      resolve(registerApi);
+      await auth.onAuthStateChanged(async (user) => {
+        if(user) {
+          const sendEmail = await user.sendEmailVerification();
+          try {
+            resolve(sendEmail); 
+          } catch (error) {
+            reject(sendEmail);
+          }
+        }else {
+          reject(user);
+        }
+      });
+      
     } catch (error) {
       dispatch(authError(error));
       reject(error);
@@ -42,8 +54,16 @@ export function loginUser(data) {
 
     try {
       const loginApi = await auth.signInWithEmailAndPassword(data.email, data.password);
-      dispatch(loginSuccess(loginApi));
-      resolve(loginApi);
+      const isVerified = loginApi.emailVerified;
+      const notVerified = {
+        err: 'email is not verified'
+      };
+      if(isVerified) {
+        dispatch(loginSuccess(loginApi));
+        resolve(loginApi);
+      } else {
+        reject(notVerified);
+      }
     } catch (error) {
       dispatch(authError(error));
       reject(error);
@@ -52,16 +72,16 @@ export function loginUser(data) {
 }
 
 export function logoutUser() {
-  return async (dispatch) => {
+  return (dispatch) => new Promise(async (resolve, reject) => {
     try {
       const logoutApi = await auth.signOut();
       dispatch(loggedOut());
-      return logoutApi;
+      resolve(logoutApi);
     } catch (error) {
       dispatch(authError(error));
-      throw new Error(error);
+      reject(error);
     }
-  }
+  });
 }
 
 // Actions Creators
