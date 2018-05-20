@@ -1,6 +1,6 @@
 import * as t from './types';
 import * as api from '../config/api';
-import { auth } from "../config/firebase";
+import { auth, database } from "../config/firebase";
 
 import { AsyncStorage } from 'react-native';
 
@@ -14,13 +14,22 @@ export function registerUser(data) {
       dispatch(registerSuccess(registerApi));
       await auth.onAuthStateChanged(async (user) => {
         if(user) {
-          const sendEmail = await user.sendEmailVerification();
           try {
-            resolve(sendEmail); 
+            // const sendEmail = await user.sendEmailVerification();
+            await database.ref('students/' + user.uid).set({
+              email: data.email,
+            }, function(error) {
+              if (error) {
+                reject(error);
+              } else {
+                // Data saved successfully!
+                resolve(registerApi);
+              }
+            });
           } catch (error) {
-            reject(sendEmail);
+            reject(error);
           }
-        }else {
+        } else {
           reject(user);
         }
       });
@@ -31,21 +40,6 @@ export function registerUser(data) {
     }
 
   });
-}
-
-export function registerTeacher(data) {
-  return async (dispatch) => {
-
-    dispatch(checkingStatus());
-
-    try {
-      const registerApi = await auth.createUserWithEmailAndPassword(data.email, data.password);
-      return dispatch(registerSuccess(registerApi));
-    } catch (error) {
-      dispatch(authError(error));
-      throw new Error(error);
-    }
-  };
 }
 
 export function loginUser(data) {
