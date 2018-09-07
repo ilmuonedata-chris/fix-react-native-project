@@ -13,7 +13,7 @@ import {
 import commonStyles from '../../common/CommonStyleSheet';
 import styles from './Stylesheet';
 
-export default class HomePage extends Component<{}> {
+export default class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = { 

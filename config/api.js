@@ -1,4 +1,3 @@
-import { auth, database } from './firebase';
 import validator from 'validator';
 
 // export const register = (data, callback) => {

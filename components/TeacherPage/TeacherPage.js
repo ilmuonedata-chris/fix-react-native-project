@@ -42,11 +42,11 @@ export class TeacherPage extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <ScrollView style={styles.scrollView}>
         <View style={[styles.teacherProfile]}>
           <Image
             style={styles.roundedImg}
             source={require('../../assets/images/starwars-me.jpg')}
-            resizeMode="contain"
           />
           <Text style={[commonStyles.boldText, styles.teacherName]}>Katarina Elvis</Text>
           <View style={{flexDirection: 'row', marginTop: 5}}>
@@ -82,7 +82,7 @@ export class TeacherPage extends Component {
           </View>
         </View> 
         
-        <ScrollView style={styles.scrollView}>
+        
           <View style={[styles.teacherDetails, {borderTopWidth: 0}]}>
             <Text style={[commonStyles.boldText, styles.header]}>About</Text>
             <Text style={[commonStyles.lightText, {fontSize: 14}]}>Math is simply my subject of choice, mainly because I like to solve computing problems. Other than that, Math is more than just remembering formulas, it also teaches us how to solve problems efficiently</Text>

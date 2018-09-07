@@ -23,6 +23,9 @@ export default ScaledSheet.create({
   cardBorder: {
     borderRadius: 10,
     marginBottom: 15,
+    backgroundColor: 'white',
+    margin: 10,
+    elevation: 7,
   },
   cardBodyWrapper: {
     paddingTop: 20, paddingBottom: 15,
@@ -51,17 +54,18 @@ export default ScaledSheet.create({
     marginBottom: 15,
   },
   cardLessons: {
-    marginBottom: 15,
+    marginBottom: 10,
     flexDirection:'row',
   },
   roundedButton: {
     marginRight: 5,
-    backgroundColor: 'transparent',
-    borderWidth: 1,
+    paddingTop: 3,
+    paddingBottom: 3,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 20,
     borderColor: '#00b16e',
-    paddingTop: 0, paddingBottom: 0,
-    paddingLeft: 0, paddingRight: 0,
-    height: 20,
+    borderWidth: 1
   },
   lessonText: {
     fontSize: 10,
@@ -96,10 +100,8 @@ export default ScaledSheet.create({
     color: '#00b16e',
   },
   roundedImg: {
-    height: '70@s',
-    width: '70@s',
-    borderWidth: 1,
-    borderColor:'rgba(0,0,0,0.2)',
-    borderRadius: '35@s',
+    height: 70,
+    width: 70,
+    borderRadius: 35,
   },
 });

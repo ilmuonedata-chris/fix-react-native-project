@@ -15,11 +15,9 @@ export default ScaledSheet.create({
     alignItems: 'center',
   },
   roundedImg: {
-    height: '80@s',
-    width: '80@s',
-    borderWidth: 1,
-    borderColor:'rgba(0,0,0,0.2)',
-    borderRadius: '40@s', // for heigh&width 80
+    height: 95,
+    width: 95,
+    borderRadius: 45, // for heigh&width 80
     // borderRadius: '50@s', // for heigh&width 100
     marginBottom: 10,
   },
@@ -81,7 +79,7 @@ export default ScaledSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: 20, paddingRight: 20,
-    paddingTop: 15, paddingBottom: 15,
+    paddingTop: 10, paddingBottom: 10,
   },
   
   scheduleBtnText: {

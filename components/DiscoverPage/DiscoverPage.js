@@ -45,12 +45,11 @@ export default class DiscoverPage extends Component {
       <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
           <View style={{paddingBottom: 30}}>
-            <Card style={styles.cardBorder}>
+            <View style={styles.cardBorder}>
               <View style={styles.cardBodyWrapper}>
                 <Image
                   style={styles.roundedImg}
                   source={require('../../assets/images/starwars-me.jpg')}
-                  resizeMode="contain"
                 />
                 <View style={styles.rightCard}>
                   <Text style={[commonStyles.boldText, styles.cardTeacher]}>Katarina von McPherson</Text>
@@ -74,12 +73,12 @@ export default class DiscoverPage extends Component {
               </View>
               <View style={[styles.bodyCard]}>
                 <View style={styles.cardLessons}>
-                  <Button rounded style={styles.roundedButton}>
+                  <TouchableOpacity style={styles.roundedButton}>
                     <Text style={[commonStyles.boldText, styles.lessonText]}>Matematika</Text>
-                  </Button>
-                  <Button rounded style={styles.roundedButton}>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.roundedButton}>
                     <Text style={[commonStyles.boldText, styles.lessonText]}>Programming</Text>
-                  </Button>
+                  </TouchableOpacity>
                 </View>
                 <Text style={[commonStyles.boldText, styles.cardDescription]}>
                   Math is simply my subject of choice, mainly because I like to solve computing problems. Other than that, Math is more than just remembering formulas, it also teaches us how to solve problems efficiently...
@@ -98,13 +97,12 @@ export default class DiscoverPage extends Component {
                   </Button>
                 </View>
               </View>
-            </Card>
-            <Card style={styles.cardBorder}>
+            </View>
+            <View style={styles.cardBorder}>
               <View style={styles.cardBodyWrapper}>
                 <Image
                   style={styles.roundedImg}
                   source={require('../../assets/images/starwars-me.jpg')}
-                  resizeMode="contain"
                 />
                 <View style={styles.rightCard}>
                   <Text style={[commonStyles.boldText, styles.cardTeacher]}>Katarina von McPherson</Text>
@@ -128,12 +126,12 @@ export default class DiscoverPage extends Component {
               </View>
               <View style={[styles.bodyCard]}>
                 <View style={styles.cardLessons}>
-                  <Button rounded style={styles.roundedButton}>
+                  <TouchableOpacity style={styles.roundedButton}>
                     <Text style={[commonStyles.boldText, styles.lessonText]}>Matematika</Text>
-                  </Button>
-                  <Button rounded style={styles.roundedButton}>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.roundedButton}>
                     <Text style={[commonStyles.boldText, styles.lessonText]}>Programming</Text>
-                  </Button>
+                  </TouchableOpacity>
                 </View>
                 <Text style={[commonStyles.boldText, styles.cardDescription]}>
                   Math is simply my subject of choice, mainly because I like to solve computing problems. Other than that, Math is more than just remembering formulas, it also teaches us how to solve problems efficiently...
@@ -151,13 +149,12 @@ export default class DiscoverPage extends Component {
                   </Button>
                 </View>
               </View>
-            </Card>
-            <Card style={styles.cardBorder}>
+            </View>
+            <View style={styles.cardBorder}>
               <View style={styles.cardBodyWrapper}>
                 <Image
                   style={styles.roundedImg}
                   source={require('../../assets/images/starwars-me.jpg')}
-                  resizeMode="contain"
                 />
                 <View style={styles.rightCard}>
                   <Text style={[commonStyles.boldText, styles.cardTeacher]}>Katarina von McPherson</Text>
@@ -181,12 +178,12 @@ export default class DiscoverPage extends Component {
               </View>
               <View style={[styles.bodyCard]}>
                 <View style={styles.cardLessons}>
-                  <Button rounded style={styles.roundedButton}>
+                  <TouchableOpacity style={styles.roundedButton}>
                     <Text style={[commonStyles.boldText, styles.lessonText]}>Matematika</Text>
-                  </Button>
-                  <Button rounded style={styles.roundedButton}>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.roundedButton}>
                     <Text style={[commonStyles.boldText, styles.lessonText]}>Programming</Text>
-                  </Button>
+                  </TouchableOpacity>
                 </View>
                 <Text style={[commonStyles.boldText, styles.cardDescription]}>
                   Math is simply my subject of choice, mainly because I like to solve computing problems. Other than that, Math is more than just remembering formulas, it also teaches us how to solve problems efficiently...
@@ -204,7 +201,7 @@ export default class DiscoverPage extends Component {
                   </Button>
                 </View>
               </View>
-            </Card>
+            </View>
           </View>
         </ScrollView>
       </View>

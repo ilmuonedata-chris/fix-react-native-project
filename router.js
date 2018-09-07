@@ -18,10 +18,6 @@ import DiscoverPage from './components/DiscoverPage/DiscoverPage';
 import TeacherPage from './components/TeacherPage/TeacherPage';
 import SchedulePage from './components/SchedulePage/SchedulePage';
 
-// Teacher
-import TeacherLogin from './components/TeacherComponents/LoginPage/LoginPage';
-import TeacherSignup from './components/TeacherComponents/SignupPage/SignupPage';
-
 const headerStyling = {
   backgroundColor: '#fff',
   elevation: 0,
@@ -67,20 +63,6 @@ export const SignedOut = StackNavigator({
   },
   Signup: {
     screen: SignupPage,
-    navigationOptions: ({navigation}) => ({
-      headerLeft: (customBackBtn(navigation)),
-      headerStyle: headerStyling,
-    })
-  },
-  TeacherLogin: {
-    screen: TeacherLogin,
-    navigationOptions: ({navigation}) => ({
-      headerLeft: (customBackBtn(navigation)),
-      headerTitleStyle: headerTitleStyling
-    })
-  },
-  TeacherSignup: {
-    screen: TeacherSignup,
     navigationOptions: ({navigation}) => ({
       headerLeft: (customBackBtn(navigation)),
       headerStyle: headerStyling,
@@ -249,7 +231,7 @@ export const createRootNavigator = (signedIn = false) => {
       }
     },
     {
-      initialRouteName: signedIn ? "SignedIn" : "SignedOut"
+      initialRouteName: signedIn ? "SignedIn" : "SignedIn"
     }
   );
 };
